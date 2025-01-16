@@ -11,14 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('time_entries', function (Blueprint $table) {
             $table->id();
-            $table->string('username');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->rememberToken();
+            $table->unsignedBigInteger('task_id');
+            $table->dateTime('start_time');
+            $table->dateTime('end_time');
+            $table->unsignedInteger('duration');
+            $table->text('notes')->nullable();
             $table->timestamps();
+            $table->foreign('task_id')->references('id')->on('tasks');
         });
     }
 
@@ -27,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('time_entries');
     }
 };
