@@ -108,10 +108,10 @@ networks:
     driver: bridge
 
 volumes:
-  # vendor:
-  #   name: peakspace-api_vendor
-  # node_modules:
-  #   name: peakspace-api_node_modules
+  vendor:
+    name: peakspace-api_vendor
+  node_modules:
+    name: peakspace-api_node_modules
   db:
     name: peakspace-db
   redis:
