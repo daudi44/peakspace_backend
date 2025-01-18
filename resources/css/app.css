@@ -5,3 +5,9 @@
 [x-cloak] {
     display: none;
 }
+
+@layer components {
+    .btn-primary {
+        background-color: theme('colors.primary'); /* Custom color */
+    }
+}
