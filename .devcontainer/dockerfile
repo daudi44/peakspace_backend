@@ -1,0 +1,28 @@
+FROM globalstech/laravel-server:php-8.2-dev
+# FROM globalstech/laravel-server:php-8.2-node-16-dev
+USER root
+
+COPY start.sh /usr/local/bin/start.sh
+RUN chmod u+x /usr/local/bin/start.sh && \
+    chown app /usr/local/bin/start.sh
+
+RUN apk update && apk add --no-cache --update \
+    autoconf \
+    gcc \
+    g++ \
+    make \
+    unixodbc \
+    unixodbc-dev \
+    freetds \
+    freetds-dev \
+    mariadb-client \
+    libstdc++ \
+    php82-dev \
+    php82-pear \
+    php82-pdo \
+    php82-pdo_dblib \
+    linux-headers \
+    curl \
+    bash
+
+USER app
